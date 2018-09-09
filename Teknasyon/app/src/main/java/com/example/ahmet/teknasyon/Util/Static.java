@@ -1,9 +1,12 @@
 package com.example.ahmet.teknasyon.Util;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Environment;
+import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -52,5 +55,18 @@ public class Static {
                             | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
         }
 
+    }
+    public  static boolean isStoragePermissionGranted(Context context) {
+        if (Build.VERSION.SDK_INT >= 23) {
+            if (context.checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+                return true;
+            } else {
+                ActivityCompat.requestPermissions((Activity) context, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+                return false;
+            }
+        }
+        else { //permission is automatically granted on sdk<23 upon installation
+            return true;
+        }
     }
 }

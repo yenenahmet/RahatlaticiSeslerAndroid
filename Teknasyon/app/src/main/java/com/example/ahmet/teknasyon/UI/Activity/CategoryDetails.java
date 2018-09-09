@@ -1,5 +1,11 @@
 package com.example.ahmet.teknasyon.UI.Activity;
 
+import android.Manifest;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -20,13 +26,14 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class CategoryDetails extends AppCompatActivity {
     private RecyclerView recyclerView;
-
+    public static Boolean aBoolean =false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category_details);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         DataLoad(getIntent().getExtras().getInt("ID"));
+        Static.isStoragePermissionGranted(this);
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -73,4 +80,20 @@ public class CategoryDetails extends AppCompatActivity {
         }
         return CategoryList;
     }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode){
+            case 1:
+                if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                    aBoolean = true;
+                }else{
+                    Toast.makeText(this,"Dosya Yazma  İzni Verilmedi",Toast.LENGTH_LONG).show();
+                }
+                break;
+        }
+    }
+
+
 }

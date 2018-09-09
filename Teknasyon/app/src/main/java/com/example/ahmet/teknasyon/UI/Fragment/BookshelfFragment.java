@@ -1,6 +1,9 @@
 package com.example.ahmet.teknasyon.UI.Fragment;
+import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,6 +18,7 @@ import com.example.ahmet.teknasyon.R;
 import com.example.ahmet.teknasyon.Retrofit.Interface.RetInterface;
 import com.example.ahmet.teknasyon.Retrofit.Util.RetUtil;
 import com.example.ahmet.teknasyon.UI.Activity.CategoryDetails;
+import com.example.ahmet.teknasyon.UI.Activity.MainActivity;
 import com.example.ahmet.teknasyon.Util.Static;
 import java.util.List;
 import cn.pedant.SweetAlert.SweetAlertDialog;
@@ -26,7 +30,12 @@ public class BookshelfFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_bookshelf, container, false);
-        DataLoad(view);
+        if(Static.isStoragePermissionGranted(getActivity())){
+            DataLoad(view);
+        }else{
+            Toast.makeText(getActivity(),"Uygulamaya izin verilmediği için işlem yapılmaz...",Toast.LENGTH_LONG).show();
+        }
+
         return view;
     }
 

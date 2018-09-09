@@ -16,6 +16,7 @@ import com.example.ahmet.teknasyon.MyLib.RecyclerViewBaseSelectedAdapter;
 import com.example.ahmet.teknasyon.R;
 import com.example.ahmet.teknasyon.Retrofit.Interface.RetInterface;
 import com.example.ahmet.teknasyon.Retrofit.Util.RetUtil;
+import com.example.ahmet.teknasyon.UI.Activity.CategoryDetails;
 import com.example.ahmet.teknasyon.Util.Static;
 import java.util.List;
 import cn.pedant.SweetAlert.SweetAlertDialog;
@@ -47,7 +48,11 @@ public class CategoryDetailsAdapter extends RecyclerViewBaseSelectedAdapter<Cate
         holder.CategoryDetailsTitle.setText(val.getTitle());
         holder.CategoryDetailsSubTitle.setText(val.getExplanation());
         holder.CategoriDetailsAdd.setOnClickListener(view -> {
-           DowloadMp3(position,context);
+            if(Static.isStoragePermissionGranted(context)){
+                DowloadMp3(position,context);
+            }else{
+                Toast.makeText(context,"Dosya Yazma İzni verilmediği için İşlem gerçekleştirilmiyor...",Toast.LENGTH_LONG).show();
+            }
         });
     }
 
