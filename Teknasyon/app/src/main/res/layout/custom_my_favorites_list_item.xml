@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="120dp"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="12dp"
+    app:cardBackgroundColor="#e8e8e8"
+    android:layout_margin="15dp"
+    >
+    <android.support.percent.PercentRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_centerInParent="true"
+        app:layout_widthPercent="85%"
+        android:orientation="vertical"
+        android:weightSum="10"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="5">
+            <android.support.v7.widget.AppCompatTextView
+                android:textStyle="bold"
+                android:textSize="15dp"
+                android:id="@+id/MyFavoritesTextviewTitle"
+                android:gravity="center_vertical"
+                android:layout_weight="1"
+                android:text="TITLE"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <android.support.v7.widget.AppCompatTextView
+                android:textStyle="bold"
+                android:textSize="11dp"
+                android:id="@+id/MyFavoritesTextviewSubTitle"
+                android:gravity="center_vertical"
+                android:layout_weight="1"
+                android:text="SUBTITLE"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_weight="5"
+            android:weightSum="10"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <android.support.v7.widget.AppCompatSeekBar
+                android:progress="100"
+                android:max="100"
+                android:id="@+id/MyFavoritesSeekBar"
+                android:layout_weight="2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+            <android.support.percent.PercentRelativeLayout
+                android:id="@+id/MyFavoritesDeleteButton"
+            android:layout_width="match_parent"
+            android:layout_weight="4"
+            android:layout_height="match_parent">
+                <android.support.v7.widget.AppCompatImageView
+                    android:layout_centerInParent="true"
+                    android:src="@mipmap/likedelete"
+                    android:id="@+id/MyfavoriteImageDelete"
+                    app:layout_widthPercent="80%"
+                    app:layout_heightPercent="80%"
+                    />
+            </android.support.percent.PercentRelativeLayout>
+            <android.support.percent.PercentRelativeLayout
+
+                android:id="@+id/MyFavoritesStartButton"
+                android:layout_width="match_parent"
+                android:layout_weight="4"
+                android:layout_height="match_parent">
+                <android.support.v7.widget.AppCompatImageView
+                    android:layout_centerInParent="true"
+                    android:src="@mipmap/play"
+                    android:id="@+id/MyfavoriteImageStartPause"
+                    app:layout_widthPercent="80%"
+                    app:layout_heightPercent="80%"
+                    />
+            </android.support.percent.PercentRelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+    </android.support.percent.PercentRelativeLayout>
+</android.support.v7.widget.CardView>
