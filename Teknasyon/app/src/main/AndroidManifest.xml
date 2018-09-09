@@ -14,13 +14,16 @@
         android:supportsRtl="true"
         android:theme="@style/NoActionBar"
         tools:replace="android:icon">
-        <activity android:name=".UI.Activity.MainActivity">
+        <activity android:name=".UI.Activity.MainActivity"
+            android:screenOrientation="portrait">
 
         </activity>
         <activity
             android:name=".UI.Activity.CategoryDetails"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
-        <activity android:name=".UI.Activity.StartActivity">
+        <activity android:name=".UI.Activity.StartActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
